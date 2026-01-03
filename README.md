@@ -34,7 +34,7 @@ Green (G)
 Blue (B)
 values ranging from 0 to 255.
 
- # 🔹 Grayscale Conversion
+ ##🔹 Grayscale Conversion
 
 To calculate pixel brightness, the luminance formula is used:
 
@@ -43,12 +43,12 @@ Gray = 0.299R + 0.587G + 0.114B
 
 This formula matches human visual perception.
 
-# 🔹 ASCII Mapping
+## 🔹 ASCII Mapping
 
 Dark pixels are represented using dense characters (@, #),
 Light pixels use lighter characters (. , ,).
 
-# 🔹 ANSI Escape Codes
+## 🔹 ANSI Escape Codes
 
 ANSI escape codes allow color formatting in terminals using 24-bit true color (RGB).
 
@@ -60,7 +60,7 @@ ANSI escape codes allow color formatting in terminals using 24-bit true color (R
  Explore how terminals handle colors and text
  Build a unique project beyond basic tutorials
 
-# 🌍 Real-World Relevance
+## 🌍 Real-World Relevance
 
 The concepts used here are applied in:
 Image preprocessing for AI & ML
