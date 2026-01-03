@@ -1,0 +1,43 @@
+from PIL import Image
+
+ASCII_CHARS = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."]
+
+def process_colored_ascii(path, new_width=100):
+    try:
+        img = Image.open(path).convert("RGB")
+
+        # Resize
+        width, height = img.size
+        aspect_ratio = height / width
+        new_height = int(new_width * aspect_ratio * 0.5)
+        img = img.resize((new_width, new_height))
+
+        pixels = img.load()
+        ascii_str = ""
+
+        for y in range(new_height):
+            for x in range(new_width):
+                r, g, b = pixels[x, y]
+
+                # Convert RGB to grayscale manually
+                gray = int(0.299*r + 0.587*g + 0.114*b)
+                index = gray // 25
+                if index > 10:
+                    index = 10
+
+                char = ASCII_CHARS[index]
+
+                # ANSI color (foreground)
+                ascii_str += f"\033[38;2;{r};{g};{b}m{char}"
+
+            ascii_str += "\033[0m\n"  # reset color at end of line
+
+        return ascii_str
+
+    except Exception as e:
+        return f"Error: {e}"
+
+# Run
+path = "/content/ss.jpg"
+output = process_colored_ascii(path)
+print(output)
